@@ -1,8 +1,8 @@
 package util;
 /**********************************
  * IFPB - Curso Superior de Sistemas para Internet
- * Persistência de Objetos
- * Prof. Fausto Maranhão Ayres
+ * Persistï¿½ncia de Objetos
+ * Prof. Fausto Maranhï¿½o Ayres
  **********************************/
 
 import java.util.Properties;
@@ -39,8 +39,8 @@ public class Util {
 		else
 			conectarBancoRemoto(); // banco remoto (precisa de um servidor ativo)
 		
-		// ativar controle de IDs automáticos
-		ControleID.ativar(manager); // ativa geração de IDs automáticos para as classes com atributo "int id"
+		// ativar controle de IDs automï¿½ticos
+		ControleID.ativar(manager); // ativa geraï¿½ï¿½o de IDs automï¿½ticos para as classes com atributo "int id"
 	}
 
 	private static void  conectarBancoLocal() {
@@ -53,7 +53,7 @@ public class Util {
 		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 		config.common().messageLevel(0); // mensagens na tela 0(desliga),1,2,3...
 		
-		// habilitar cascata na alteração, remoção e leitura
+		// habilitar cascata na alteraï¿½ï¿½o, remoï¿½ï¿½o e leitura
 		config.common().objectClass(Pessoa.class).cascadeOnDelete(true);
 		config.common().objectClass(Pessoa.class).cascadeOnUpdate(true);
 		config.common().objectClass(Pessoa.class).cascadeOnActivate(true);
@@ -86,7 +86,7 @@ public class Util {
 		ClientConfiguration config = Db4oClientServer.newClientConfiguration();
 		config.common().messageLevel(0); // 0,1,2,3...
 		
-		// habilitar cascata na alteração, remoção e leitura
+		// habilitar cascata na alteraï¿½ï¿½o, remoï¿½ï¿½o e leitura
 		config.common().objectClass(Pessoa.class).cascadeOnDelete(false);
 		config.common().objectClass(Pessoa.class).cascadeOnUpdate(true);
 		config.common().objectClass(Pessoa.class).cascadeOnActivate(true);
@@ -98,7 +98,7 @@ public class Util {
 		config.common().objectClass(Telefone.class).cascadeOnActivate(true);
 
 		// **************************************
-		// Conexão client-server
+		// Conexï¿½o client-server
 		// **************************************
 		try {
 			manager = Db4oClientServer.openClient(config, ipservidor, 34000, "usuario1", "senha1");
