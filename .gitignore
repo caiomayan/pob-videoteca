@@ -30,4 +30,4 @@ bin/
 .DS_Store
 
 ### db4o ###
-.db4o
+*.db4o
