@@ -15,9 +15,8 @@ import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ClientConfiguration;
 
-import modelo.Aluno;
-import modelo.Pessoa;
-import modelo.Telefone;
+import modelo.Genero;
+import modelo.Video;
 
 public class Util {
 	private static ObjectContainer manager;
@@ -54,15 +53,12 @@ public class Util {
 		config.common().messageLevel(0); // mensagens na tela 0(desliga),1,2,3...
 		
 		// habilitar cascata na altera��o, remo��o e leitura
-		config.common().objectClass(Pessoa.class).cascadeOnDelete(true);
-		config.common().objectClass(Pessoa.class).cascadeOnUpdate(true);
-		config.common().objectClass(Pessoa.class).cascadeOnActivate(true);
-		config.common().objectClass(Aluno.class).cascadeOnDelete(true);
-		config.common().objectClass(Aluno.class).cascadeOnUpdate(true);
-		config.common().objectClass(Aluno.class).cascadeOnActivate(true);
-		config.common().objectClass(Telefone.class).cascadeOnDelete(true);
-		config.common().objectClass(Telefone.class).cascadeOnUpdate(true);
-		config.common().objectClass(Telefone.class).cascadeOnActivate(true);
+		config.common().objectClass(Genero.class).cascadeOnDelete(true);
+		config.common().objectClass(Genero.class).cascadeOnUpdate(true);
+		config.common().objectClass(Genero.class).cascadeOnActivate(true);
+		config.common().objectClass(Video.class).cascadeOnDelete(true);
+		config.common().objectClass(Video.class).cascadeOnUpdate(true);
+		config.common().objectClass(Video.class).cascadeOnActivate(true);
 
 		// conexao local
 		//-------------- 
@@ -87,15 +83,12 @@ public class Util {
 		config.common().messageLevel(0); // 0,1,2,3...
 		
 		// habilitar cascata na altera��o, remo��o e leitura
-		config.common().objectClass(Pessoa.class).cascadeOnDelete(false);
-		config.common().objectClass(Pessoa.class).cascadeOnUpdate(true);
-		config.common().objectClass(Pessoa.class).cascadeOnActivate(true);
-		config.common().objectClass(Aluno.class).cascadeOnDelete(false);
-		config.common().objectClass(Aluno.class).cascadeOnUpdate(true);
-		config.common().objectClass(Aluno.class).cascadeOnActivate(true);
-		config.common().objectClass(Telefone.class).cascadeOnDelete(false);
-		config.common().objectClass(Telefone.class).cascadeOnUpdate(true);
-		config.common().objectClass(Telefone.class).cascadeOnActivate(true);
+		config.common().objectClass(Video.class).cascadeOnDelete(false);
+		config.common().objectClass(Video.class).cascadeOnUpdate(true);
+		config.common().objectClass(Video.class).cascadeOnActivate(true);
+		config.common().objectClass(Genero.class).cascadeOnDelete(false);
+		config.common().objectClass(Genero.class).cascadeOnUpdate(true);
+		config.common().objectClass(Genero.class).cascadeOnActivate(true);
 
 		// **************************************
 		// Conex�o client-server
