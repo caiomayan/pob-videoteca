@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Genero {
     // Declaração das variáveis da classe
+    private int id;
     private final String nome;
-    private ArrayList<Video> listaVideos; // Um gênero pode ter vários vídeos N:N
+    private ArrayList<Video> listaVideos = new ArrayList<>(); // Um gênero pode ter vários vídeos N:N
 
     // Construtor
-    public Genero(String nome, ArrayList<Video> listaVideos){
+    public Genero(String nome){
         this.nome = nome;
-        this.listaVideos = listaVideos;
     }
 
     // Metodos Get
@@ -23,9 +23,26 @@ public class Genero {
         return listaVideos;
     }
 
-    // Metodos Set
+    // Metodos Set / add e remover
 
-    public void setListaVideos(ArrayList<Video> listaVideos) {
-        this.listaVideos = listaVideos;
+    public void addVideo(Video video) {
+        listaVideos.add(video);
+    }
+
+    public void removerVideo(Video video) {
+        listaVideos.remove(video);
+    }
+
+    // Metodo toString override
+
+    @Override
+    public String toString() {
+        String texto = "ID: "+ id + " Gênero:" + String.format("%8s", nome) + " Vídeos:" ;
+        if (listaVideos.isEmpty())
+            texto += "Sem vídeos";
+        else
+            for(Video v: listaVideos)
+                texto += v.getTitulo() + ", ";
+        return texto;
     }
 }

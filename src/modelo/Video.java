@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public class Video {
     // Declaração de variáveis
-
-    private final int id;
+    private int id;
     private String titulo;
     private String data;
     private String linksite;
     private String classificacao;
-    private ArrayList<Genero> listaGeneros; // Um vídeo pode ter vários gêneros N:N
+    private ArrayList<Genero> listaGeneros = new ArrayList<>(); // Um vídeo pode ter vários gêneros N:N
 
     // Construtor
-    public Video(int id, String titulo, String data, String linksite, String classificacao){
-        this.id = id;
+    public Video(String titulo, String data, String linksite, String classificacao){
         this.titulo = titulo;
     }
 
@@ -42,7 +40,7 @@ public class Video {
         return listaGeneros;
     }
 
-    // Metodos Set
+    // Metodos Set / add e remover
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -60,7 +58,25 @@ public class Video {
         this.classificacao = classificacao;
     }
 
-    public void setListaGeneros(ArrayList<Genero> listaGeneros) {
-        this.listaGeneros = listaGeneros;
+    public void addGenero(Genero genero) {
+        listaGeneros.add(genero);
+    }
+
+    public void removerGenero(Genero genero) {
+        listaGeneros.remove(genero);
+    }
+
+    // Metodo toString
+
+    @Override
+    public String toString() {
+        String texto= "ID: "+id + " Título:" + String.format("%8s", titulo) + " Gêneros:" ;
+        if (listaGeneros.isEmpty())
+            texto += "Sem gêneros";
+        else
+            for(Genero g: listaGeneros)
+                texto += g.getNome() + ", ";
+        return texto;
+
     }
 }
