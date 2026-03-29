@@ -31,7 +31,9 @@ public class Listar {
         for (Video video : listaVideos) {
             System.out.println(video);
         }
+        Util.desconectar();
     }
+    
 
     public static void main(String[] args) {
         new Listar();
