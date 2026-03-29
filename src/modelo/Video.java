@@ -75,8 +75,11 @@ public class Video {
         if (listaGeneros.isEmpty())
             texto += "Sem gêneros";
         else
-            for(Genero g: listaGeneros)
-                texto += g.getNome() + "; ";
+            for(Genero g: listaGeneros) {
+                if (g != null) {
+                	texto += g.getNome() + "; ";
+                }
+            }
         return texto;
     }
 }
