@@ -37,12 +37,12 @@ public class Genero {
 
     @Override
     public String toString() {
-        String texto = "ID: "+ id + " Gênero:" + String.format("%8s", nome) + " Vídeos:" ;
+        String texto = "\nGênero " + id + ": " + nome + "\nVídeos: ";
         if (listaVideos.isEmpty())
             texto += "Sem vídeos";
         else
             for(Video v: listaVideos)
-                texto += v.getTitulo() + ", ";
+                texto += v.getTitulo() + ";\n";
         return texto;
     }
 }
