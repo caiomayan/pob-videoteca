@@ -60,6 +60,7 @@ public class Video {
 
     public void addGenero(Genero genero) {
         listaGeneros.add(genero);
+        genero.addVideo(this);
     }
 
     public void removerGenero(Genero genero) {
@@ -70,13 +71,12 @@ public class Video {
 
     @Override
     public String toString() {
-        String texto= "ID: "+id + " Título:" + String.format("%8s", titulo) + " Gêneros:" ;
+        String texto= "\nVídeo " + id + ": " + titulo + "\nGêneros: " ;
         if (listaGeneros.isEmpty())
             texto += "Sem gêneros";
         else
             for(Genero g: listaGeneros)
-                texto += g.getNome() + ", ";
+                texto += g.getNome() + "; ";
         return texto;
-
     }
 }
