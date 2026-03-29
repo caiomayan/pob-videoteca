@@ -16,7 +16,7 @@ public class Listar {
 
         manager = Util.getManager();
 
-        System.out.println("Lista de gêneros");
+        System.out.println("Lista de gêneros\n");
         Query q = manager.query();
         q.constrain(Genero.class);
         List<Genero> listaGeneros = q.execute();
@@ -24,7 +24,7 @@ public class Listar {
             System.out.println(genero);
         }
 
-        System.out.println("\n\nLista de vídeos");
+        System.out.println("\nLista de vídeos");
         q = manager.query();
         q.constrain(Video.class);
         List<Video> listaVideos = q.execute();

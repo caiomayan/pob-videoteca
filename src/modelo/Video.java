@@ -63,19 +63,25 @@ public class Video {
     }
 
     public void addGenero(Genero genero) {
-        listaGeneros.add(genero);
-        genero.addVideo(this);
+        if(!listaGeneros.contains(genero)){
+            listaGeneros.add(genero);
+            genero.addVideo(this);
+        }
     }
 
     public void removerGenero(Genero genero) {
-        listaGeneros.remove(genero);
+        if(listaGeneros.contains(genero)){
+            listaGeneros.remove(genero);
+            genero.removerVideo(this);
+        }
+
     }
 
     // Metodo toString
 
     @Override
     public String toString() {
-        String texto= "\nVídeo " + id + ": " + titulo + "\nGêneros: " ;
+        String texto= "\nVídeo " + id + ": " + titulo + "\nData: " + data + "\nClassificação: " + classificacao + "\nURL: '" + linksite + "'" + "\nGêneros: " ;
         if (listaGeneros.isEmpty())
             texto += "Sem gêneros";
         else
