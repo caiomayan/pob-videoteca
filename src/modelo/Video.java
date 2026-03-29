@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Video {
     // Declaração de variáveis
@@ -9,7 +10,7 @@ public class Video {
     private String data;
     private String linksite;
     private String classificacao;
-    private ArrayList<Genero> listaGeneros = new ArrayList<>(); // Um vídeo pode ter vários gêneros N:N
+    private List<Genero> listaGeneros = new ArrayList<>(); // Um vídeo pode ter vários gêneros N:N
 
     // Construtor
     public Video(String titulo, String data, String linksite, String classificacao){
@@ -39,7 +40,7 @@ public class Video {
         return classificacao;
     }
 
-    public ArrayList<Genero> getListaGeneros() {
+    public List<Genero> getListaGeneros() {
         return listaGeneros;
     }
 
