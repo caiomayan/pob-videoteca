@@ -27,18 +27,24 @@ public class Genero {
     // Metodos Set / add e remover
 
     public void addVideo(Video video) {
-        listaVideos.add(video);
+        if(!listaVideos.contains(video)) {
+            listaVideos.add(video);
+            video.addGenero(this);
+        }
     }
 
     public void removerVideo(Video video) {
-        listaVideos.remove(video);
+        if (listaVideos.contains(video)) {
+            listaVideos.remove(video);
+            video.removerGenero(this);
+        }
     }
 
     // Metodo toString override
 
     @Override
     public String toString() {
-        String texto = "\nGênero " + id + ": " + nome + "\nVídeos: ";
+        String texto = "Gênero " + id + ": " + nome + "\nVídeos: ";
         if (listaVideos.isEmpty())
             texto += "Sem vídeos";
         else

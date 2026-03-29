@@ -63,12 +63,18 @@ public class Video {
     }
 
     public void addGenero(Genero genero) {
-        listaGeneros.add(genero);
-        genero.addVideo(this);
+        if(!listaGeneros.contains(genero)){
+            listaGeneros.add(genero);
+            genero.addVideo(this);
+        }
     }
 
     public void removerGenero(Genero genero) {
-        listaGeneros.remove(genero);
+        if(listaGeneros.contains(genero)){
+            listaGeneros.remove(genero);
+            genero.removerVideo(this);
+        }
+
     }
 
     // Metodo toString
