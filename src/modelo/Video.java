@@ -14,6 +14,9 @@ public class Video {
     // Construtor
     public Video(String titulo, String data, String linksite, String classificacao){
         this.titulo = titulo;
+        this.data = data;
+        this.linksite = linksite;
+        this.classificacao = classificacao;
     }
 
     // Metodos Get
