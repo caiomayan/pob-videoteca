@@ -56,7 +56,7 @@ public class Util {
 		config.common().objectClass(Genero.class).cascadeOnDelete(true);
 		config.common().objectClass(Genero.class).cascadeOnUpdate(true);
 		config.common().objectClass(Genero.class).cascadeOnActivate(true);
-		config.common().objectClass(Video.class).cascadeOnDelete(true);
+		config.common().objectClass(Video.class).cascadeOnDelete(false);
 		config.common().objectClass(Video.class).cascadeOnUpdate(true);
 		config.common().objectClass(Video.class).cascadeOnActivate(true);
 
