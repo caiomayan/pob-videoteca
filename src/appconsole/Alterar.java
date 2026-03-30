@@ -1,6 +1,5 @@
 package appconsole;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
@@ -16,34 +15,31 @@ public class Alterar {
     public Alterar() {
         Util.conectar();
         manager = Util.getManager();
-  
+
+        // Remover relacionamento entre a notícia do Jornal Nacional e o gênero Jornalismo
 
         Query q = manager.query();
-        q.constrain(Genero.class);
-        q.descend("nome").constrain("Ação"); // Remover primeiro video de gênero ação
+        q.constrain(Video.class);
+        q.descend("titulo").constrain("JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo");
 
-        List<Genero> lista = q.execute();
+        List<Video> videos = q.execute();
 
-        if (lista.isEmpty()) {
-            System.out.println("Não existe gênero ação.");
-        } else if(lista.get(0).getListaVideos().isEmpty()){
-        	System.out.println("Naõ existe vídeos de gênero ação");
+        if (videos.isEmpty()) {
+            System.out.println("Não existe nenhum vídeo com o nome especificado.");
+        } else if (videos.getFirst().getListaGeneros().isEmpty()) {
+        	System.out.println("Esse vídeo não tem gêneros.");
         } else {
-        	Genero genero = lista.get(0);
-        	Video v = genero.getListaVideos().get(0);
+        	Genero genero = videos.getFirst().getListaGeneros().getFirst();
+        	Video v = genero.getListaVideos().getFirst();
     		genero.removerVideo(v);
-            System.out.println("Gênero '" + genero.getNome() + "' Removido do vídeo " + v.getTitulo());
+            System.out.println("Gênero '" + genero.getNome() + "' removido do vídeo:\n" + "'" + v.getTitulo()+ "'");
             manager.store(v);
             manager.store(genero);
             manager.commit();        	
         }
- 
         Util.desconectar();
     }
 
 
-public static void main(String[] args) {
-    	new Alterar();
-
-	}
+public static void main(String[] args) { new Alterar(); }
 }
