@@ -81,7 +81,7 @@ public class Video {
 
     @Override
     public String toString() {
-        String texto= "\nVídeo " + id + ": " + titulo + "\nData: " + data + "\nClassificação: " + classificacao + "\nURL: '" + linksite + "'" + "\nGêneros: " ;
+        String texto = "\nVídeo " + id + ": " + titulo + "\nData: " + data + "\nClassificação: " + classificacao + "\nURL: '" + linksite + "'" + "\nGêneros: " ;
         if (listaGeneros.isEmpty())
             texto += "Sem gêneros";
         else
