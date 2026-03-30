@@ -29,6 +29,9 @@ public class Consultar {
         q.constrain(Video.class);
         q.descend("classificacao").constrain(x);
         List<Video> videos = q.execute();
+        if (videos.isEmpty()) {
+            System.out.println("Nenhum vídeo encontrado");
+        }
         for (Video video : videos) {
             System.out.println(video);
         }
@@ -46,6 +49,9 @@ public class Consultar {
         q.constrain(Video.class);
         q.descend("listaGeneros").descend("nome").constrain(x);
         videos = q.execute();
+        if (videos.isEmpty()) {
+            System.out.println("Nenhum vídeo encontrado");
+        }
         for (Video video : videos) {
             System.out.println(video);
         }
@@ -66,6 +72,9 @@ public class Consultar {
 
         q.descend("listaVideos").descend("classificacao").constrain(x);
         List<Genero> generos = q.execute();
+        if (generos.isEmpty()) {
+            System.out.println("Nenhum gênero encontrado");
+        }
         for (Genero genero : generos) {
             int i = 0;
             for(Video video : genero.getListaVideos()) {
@@ -78,6 +87,8 @@ public class Consultar {
         }
 
         // Fim
+
+        Util.desconectar();
         System.out.println("\nFim da consulta.");
     }
 
