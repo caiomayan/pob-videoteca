@@ -5,6 +5,8 @@
 ## Métodos appconsole
 1. Alterar
 2. Apagar
-3. Cadastrar (7 gêneros e 8 vídeos)
-4. Consultar
-5. Listar
+3. Cadastrar PRONTO
+4. Consultar PRONTO
+5. Listar PRONTO
+
+*Util.java do professor, configurado
