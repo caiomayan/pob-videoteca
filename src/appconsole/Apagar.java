@@ -17,34 +17,36 @@ public class Apagar {
     public Apagar() {
         Util.conectar();
         manager = Util.getManager();
-  
+
+        // Removendo OBJETO vídeo da Coca-Cola pelo título, com relacionamento de gênero para Publicidade
 
         Query q = manager.query();
         q.constrain(Video.class);
-        q.descend("classificacao").constrain("Livre"); // Remover primeiro video com classificacao livre
+        q.descend("titulo").constrain("Coca-Cola | Holidays Are Coming");
+        // Ou por ID:
+        // q.descend("id").constrain("3");
 
         List<Video> lista = q.execute();
 
         if (lista.isEmpty()) {
-            System.out.println("Não existe vídeos com classificação livre.");
+            System.out.println("O vídeo a ser removido não existe.");
         } else {
-        	Video video = lista.get(0);
+        	Video video = lista.getFirst();
         	for (Genero g : new ArrayList<>(video.getListaGeneros())) {
     			g.removerVideo(video);
     			manager.store(g);
 	        }
-        	
-            manager.delete(lista.get(0));
+
+        	// Cascata desligada.
+
+            manager.delete(lista.getFirst());
             manager.commit();
-            System.out.println("Vídeo '" + video.getTitulo() + "' Removido");
+            System.out.println("Vídeo '" + video.getTitulo() + "' removido com sucesso");
         }
  
         Util.desconectar();
     }
 
 
-public static void main(String[] args) {
-    	new Apagar();
-
-	}
+public static void main(String[] args) { new Apagar(); }
 }
