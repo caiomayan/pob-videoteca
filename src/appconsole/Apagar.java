@@ -21,12 +21,12 @@ public class Apagar {
 
         Query q = manager.query();
         q.constrain(Video.class);
-        q.descend("classificacao").constrain("Livre"); // Remover primeiro video com classificacao 14
+        q.descend("classificacao").constrain("Livre"); // Remover primeiro video com classificacao livre
 
         List<Video> lista = q.execute();
 
         if (lista.isEmpty()) {
-            System.out.println("Não existe vídeos com classificação 14.");
+            System.out.println("Não existe vídeos com classificação livre.");
         } else {
         	Video video = lista.get(0);
         	for (Genero g : new ArrayList<>(video.getListaGeneros())) {
