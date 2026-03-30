@@ -49,7 +49,9 @@ public class Genero {
             texto += "Sem vídeos";
         else
             for(Video v: listaVideos)
-                texto += "'" + v.getTitulo() + "'" + ";\n";
+            	if (v != null) {
+            		texto += "'" + v.getTitulo() + "'" + ";\n";
+            	}
         return texto;
     }
 }
