@@ -20,6 +20,9 @@ public class Listar {
         Query q = manager.query();
         q.constrain(Genero.class);
         List<Genero> listaGeneros = q.execute();
+        if(listaGeneros.isEmpty()) {
+            System.out.println("Nenhum gênero está cadastrado.");
+        }
         for (Genero genero : listaGeneros) {
             System.out.println(genero);
         }
@@ -28,6 +31,9 @@ public class Listar {
         q = manager.query();
         q.constrain(Video.class);
         List<Video> listaVideos = q.execute();
+        if (listaVideos.isEmpty()) {
+            System.out.println("Nenhum vídeo está cadastrado.");
+        }
         for (Video video : listaVideos) {
             System.out.println(video);
         }
