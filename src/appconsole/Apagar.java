@@ -30,10 +30,8 @@ public class Apagar {
         } else {
         	Video video = lista.get(0);
         	for (Genero g : new ArrayList<>(video.getListaGeneros())) {
-        		if (g.getListaVideos().contains(video)) {
-        			g.removerVideo(video);
-        			manager.store(g);
-        		}
+    			g.removerVideo(video);
+    			manager.store(g);
 	        }
         	
             manager.delete(lista.get(0));
