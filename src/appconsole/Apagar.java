@@ -30,16 +30,19 @@ public class Apagar {
 
         if (lista.isEmpty()) {
             System.out.println("O vídeo a ser removido não existe.");
+            Util.desconectar();
+            return;
         } else {
         	Video video = lista.getFirst();
-        	for (Genero g : new ArrayList<>(video.getListaGeneros())) {
+            List<Genero> generos = video.getListaGeneros();
+        	for (Genero g : generos) {
     			g.removerVideo(video);
     			manager.store(g);
 	        }
 
         	// Cascata desligada.
 
-            manager.delete(lista.getFirst());
+            manager.delete(video);
             manager.commit();
             System.out.println("Vídeo '" + video.getTitulo() + "' removido com sucesso");
         }
