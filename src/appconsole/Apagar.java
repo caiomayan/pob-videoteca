@@ -1,7 +1,6 @@
 package appconsole;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
@@ -29,12 +28,12 @@ public class Apagar {
         List<Video> lista = q.execute();
 
         if (lista.isEmpty()) {
-            System.out.println("O vídeo a ser removido não existe.");
+            System.out.println("O vídeo a ser apagado não existe.");
             Util.desconectar();
             return;
         } else {
         	Video video = lista.getFirst();
-            List<Genero> generos = video.getListaGeneros();
+            List<Genero> generos = new ArrayList<>(video.getListaGeneros());
         	for (Genero g : generos) {
     			g.removerVideo(video);
     			manager.store(g);
@@ -44,7 +43,7 @@ public class Apagar {
 
             manager.delete(video);
             manager.commit();
-            System.out.println("Vídeo '" + video.getTitulo() + "' removido com sucesso");
+            System.out.println("Vídeo '" + video.getTitulo() + "' apagado com sucesso");
         }
  
         Util.desconectar();
