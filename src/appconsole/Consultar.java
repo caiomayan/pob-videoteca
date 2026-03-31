@@ -21,7 +21,7 @@ public class Consultar {
         // Declaração da variável X de consulta a ser restringida
         String x = "12";
 
-        String textoConsulta1 = "__________ 1ª consulta __________\n- Quais os vídeos de classificação " + x + "?";
+        String textoConsulta1 = "__________ 1ª consulta __________\n- Quais os vídeos de classificação +" + x + "?";
 
         System.out.println(textoConsulta1);
 
@@ -63,7 +63,7 @@ public class Consultar {
         // Declarando variável N da quantidade de ocorrências da consulta
         int n = 1;
 
-        String textoConsulta3 = "\n__________ 3ª consulta __________\n- Quais os gêneros que tem mais de " + n + " vídeo ou vídeos com classificação " + x + "?\n";
+        String textoConsulta3 = "\n__________ 3ª consulta __________\n- Quais os gêneros que tem mais de " + n + " vídeo/vídeos com classificação +" + x + "?\n";
 
         System.out.println(textoConsulta3);
 
