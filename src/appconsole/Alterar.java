@@ -16,27 +16,39 @@ public class Alterar {
         Util.conectar();
         manager = Util.getManager();
 
-        // Remover relacionamento entre a notícia do Jornal Nacional e o gênero Jornalismo
+        // Remover relacionamento entre dois objetos - Remover um gênero de vídeo e um vídeo de gênero
+
+        String x = "JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo"; // Vídeo
+        String n = "Jornalismo"; // Gênero
 
         Query q = manager.query();
         q.constrain(Video.class);
-        q.descend("titulo").constrain("JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo");
-
+        q.descend("titulo").constrain(x);
         List<Video> videos = q.execute();
 
         if (videos.isEmpty()) {
             System.out.println("Não existe nenhum vídeo com o nome especificado.");
-        } else if (videos.getFirst().getListaGeneros().isEmpty()) {
-        	System.out.println("Esse vídeo não tem gêneros.");
-        } else {
-        	Genero genero = videos.getFirst().getListaGeneros().getFirst();
-        	Video v = genero.getListaVideos().getFirst();
-    		genero.removerVideo(v);
-            System.out.println("Gênero '" + genero.getNome() + "' removido do vídeo:\n" + "'" + v.getTitulo()+ "'");
-            manager.store(v);
-            manager.store(genero);
-            manager.commit();        	
+            Util.desconectar();
+            return;
         }
+
+        Video video = videos.getFirst();
+
+        for (Genero g : video.getListaGeneros()) {
+            if (g.getNome().equals(n)) {
+                video.removerGenero(g);
+                System.out.println("Gênero \n'" + g.getNome() + "' \nremovido do vídeo \n'" + video.getTitulo() + "' \ncom sucesso.\nRelacionamento alterado com sucesso.");
+
+                manager.store(video);
+                manager.store(g);
+                manager.commit();
+
+                Util.desconectar();
+                return;
+            }
+        }
+
+        System.out.println("Esse vídeo não tem o gênero especificado.");
         Util.desconectar();
     }
 
