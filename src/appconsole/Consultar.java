@@ -40,7 +40,6 @@ public class Consultar {
 
         // 2ª consulta - Quais vídeos do gênero de nome X?
 
-        // Redeclarando variável X de consulta a ser restringida
         String y = "Ação";
 
         String textoConsulta2 = "\n__________ 2ª consulta __________\n- Quais vídeos do gênero de nome " + y + "?";
@@ -60,7 +59,7 @@ public class Consultar {
 
         // 3ª consulta - Quais os gêneros que tem mais de N vídeos com classificação X?
 
-        // Redeclarando variável X de consulta a ser restringida
+        // Declaração variável Z do número da classificação do vídeo
         int z = 4;
         // Declarando variável N da quantidade de ocorrências da consulta
         int n = 2;
@@ -75,7 +74,7 @@ public class Consultar {
 
         // Uso de filtro implementando classe Evaluation do SODA - Filtro customizado
 
-        q.constrain(new Filtro1(z, n)); // Construtor necessário
+        q.constrain(new Filtro1(z, n)); // Construtor necessário para passar os parâmetros de ocorrência N e a classificação desejada Y
 
         List<Genero> generos = q.execute();
         if (generos.isEmpty()) {

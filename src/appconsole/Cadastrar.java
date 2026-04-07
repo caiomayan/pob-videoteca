@@ -100,26 +100,23 @@ public class Cadastrar {
         manager.store(irl_motovlog);
         manager.commit();
 
-        // 1 vídeo com 2 gêneros (compartilhando futebol com outro vídeo já existente)
         bastidores_copa.addGenero(futebol);
         bastidores_copa.addGenero(documentario);
         manager.store(bastidores_copa);
         manager.commit();
 
-        // 1 vídeo com 2 gêneros e teste de adição duplicada (não deve repetir por causa do contains)
+        // teste duplicidade
         analise_lancamento_game.addGenero(games);
         analise_lancamento_game.addGenero(acao);
         analise_lancamento_game.addGenero(games);
         manager.store(analise_lancamento_game);
         manager.commit();
 
-        // 1 vídeo com 2 gêneros (jornalismo + documentário)
         reportagem_mobilidade.addGenero(jornalismo);
         reportagem_mobilidade.addGenero(documentario);
         manager.store(reportagem_mobilidade);
         manager.commit();
 
-        // 1 vídeo com apenas 1 gênero
         humor_sketch.addGenero(comedia);
         manager.store(humor_sketch);
         manager.commit();
