@@ -50,7 +50,7 @@ public class Cadastrar {
                 "JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo", "2026-03-23",
                 "https://www.youtube.com/watch?v=W5iRrg8NpEg", 3);
 
-        // Novos cadastros: poucos, mas cobrindo cenários diferentes
+        // Novos cadastros fictícios: poucos, mas cobrindo cenários diferentes
         Video bastidores_copa = new Video("Bastidores da Copa: preparação e estratégia", "2026-04-01",
                 "https://www.youtube.com/watch?v=exemplo1", 4);
         Video analise_lancamento_game = new Video("Análise de lançamento: RPG de mundo aberto", "2026-02-18",
