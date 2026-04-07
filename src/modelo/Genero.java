@@ -10,11 +10,13 @@ public class Genero {
     private List<Video> listaVideos = new ArrayList<>(); // Um gênero pode ter vários vídeos N:N
 
     // Construtor
-    public Genero(String nome){
+    public Genero(String nome) {
         this.nome = nome;
     }
 
     // Metodos Get
+
+    public int getId() { return id; };
 
     public String getNome() {
         return nome;
@@ -27,7 +29,7 @@ public class Genero {
     // Metodos Set / add e remover
 
     public void addVideo(Video video) {
-        if(!listaVideos.contains(video)) {
+        if (!listaVideos.contains(video)) {
             listaVideos.add(video);
             video.addGenero(this);
         }
@@ -46,10 +48,10 @@ public class Genero {
     public String toString() {
         String texto = "Gênero " + id + ": " + nome + "\nVídeos: ";
         if (listaVideos.isEmpty())
-            texto += "Sem vídeos";
+            texto += "Sem vídeos\n";
         else
-            for(Video v: listaVideos)
-                texto += "'" + v.getTitulo() + " [" + v.getClassificacao() + "]" + "'" + ";\n";
+            for (Video v : listaVideos)
+                texto += "'" + v.getTitulo() + " [" + v.getClassificacao() + " estrelas]" + "'" + ";\n";
         return texto;
     }
 }

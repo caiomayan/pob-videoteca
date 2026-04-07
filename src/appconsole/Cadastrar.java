@@ -1,7 +1,5 @@
 package appconsole;
 
-// Import do manager do db4o
-
 import com.db4o.ObjectContainer;
 
 // Import das classes de negócio
@@ -34,17 +32,39 @@ public class Cadastrar {
         // Gênero que não está relacionado a nenhum vídeo
         Genero tutorial = new Genero("Tutorial");
 
-        Video ad_cocacola = new Video("Coca-Cola | Holidays Are Coming", "2025-11-03", "https://www.youtube.com/watch?v=Yy6fByUmPuE", "Livre");
-        Video como_jogar_cs = new Video("Dicas de como iniciar e aprender a jogar o CS2 (Counter Strike 2)", "2023-09-28", "https://www.youtube.com/watch?v=INAt-aIZ28M", "14");
-        Video invasao_ucrania = new Video("Especial: Ucrania - Arquivos de Guerra", "2023-02-24", "https://www.youtube.com/watch?v=SS6hLG4smf0", "14");
-        Video standup = new Video("ALMA DE BRASILEIRO - Paul Cabannes (stand up - show completo)", "2026-03-26", "https://www.youtube.com/watch?v=BdTVDYUrCNM", "12");
-        Video geopolitica_eua_x_ira = new Video("Entenda o conflito entre IRÃ e ESTADOS UNIDOS de uma FORMA SIMPLES", "2025-10-08", "https://www.youtube.com/watch?v=3D_vS0XlC1w", "12");
-        Video irl_motovlog = new Video("SUSTOS DE MOTO (EP. 249)", "2026-03-23", "https://www.youtube.com/watch?v=m5iNeGIkTKo", "14");
-        Video brasil_x_franca = new Video("BRASIL 1 X 2 FRANÇA | MELHORES MOMENTOS | AMISTOSO INTERNACIONAL | ge tv", "2026-03-26", "https://www.youtube.com/watch?v=MXFDz0uOSxM", "Livre");
-        Video governador_rj_renuncia_cargo = new Video("JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo", "2026-03-23", "https://www.youtube.com/watch?v=W5iRrg8NpEg", "Livre");
+        Video ad_cocacola = new Video("Coca-Cola | Holidays Are Coming", "2025-11-03",
+                "https://www.youtube.com/watch?v=Yy6fByUmPuE", 5);
+        Video como_jogar_cs = new Video("Dicas de como iniciar e aprender a jogar o CS2 (Counter Strike 2)",
+                "2023-09-28", "https://www.youtube.com/watch?v=INAt-aIZ28M", 4);
+        Video invasao_ucrania = new Video("Especial: Ucrania - Arquivos de Guerra", "2023-02-24",
+                "https://www.youtube.com/watch?v=SS6hLG4smf0", 4);
+        Video standup = new Video("ALMA DE BRASILEIRO - Paul Cabannes (stand up - show completo)",
+                "2026-03-26", "https://www.youtube.com/watch?v=BdTVDYUrCNM", 2);
+        Video geopolitica_eua_x_ira = new Video("Entenda o conflito entre IRÃ e ESTADOS UNIDOS de uma FORMA SIMPLES",
+                "2025-10-08", "https://www.youtube.com/watch?v=3D_vS0XlC1w", 4);
+        Video irl_motovlog = new Video("SUSTOS DE MOTO (EP. 249)", "2026-03-23",
+                "https://www.youtube.com/watch?v=m5iNeGIkTKo", 3);
+        Video brasil_x_franca = new Video("BRASIL 1 X 2 FRANÇA | MELHORES MOMENTOS | AMISTOSO INTERNACIONAL | ge tv",
+                "2026-03-26", "https://www.youtube.com/watch?v=MXFDz0uOSxM", 4);
+        Video governador_rj_renuncia_cargo = new Video(
+                "JN: Governador do Rio de Janeiro, Cláudio Castro, do PL, renuncia ao cargo", "2026-03-23",
+                "https://www.youtube.com/watch?v=W5iRrg8NpEg", 3);
+
+        // Novos cadastros: poucos, mas cobrindo cenários diferentes
+        Video bastidores_copa = new Video("Bastidores da Copa: preparação e estratégia", "2026-04-01",
+                "https://www.youtube.com/watch?v=exemplo1", 4);
+        Video analise_lancamento_game = new Video("Análise de lançamento: RPG de mundo aberto", "2026-02-18",
+                "https://www.youtube.com/watch?v=exemplo2", 5);
+        Video reportagem_mobilidade = new Video("Reportagem especial: mobilidade urbana no Brasil", "2026-01-12",
+                "https://www.youtube.com/watch?v=exemplo3", 3);
+        Video humor_sketch = new Video("Sketch: reunião de condomínio", "2025-12-05",
+                "https://www.youtube.com/watch?v=exemplo4", 2);
+
         Video desconhecido = new Video("Desconhecido");
 
-        // Relacionamentos e persistência: adicionando gêneros aos vídeos, guardando no manager (store) e enviando para o banco o que foi guardado no manager (commit).
+        // Relacionamentos e persistência: adicionando gêneros aos vídeos, guardando no
+        // manager (store) e enviando para o banco o que foi guardado no manager
+        // (commit).
 
         governador_rj_renuncia_cargo.addGenero(jornalismo);
         manager.store(governador_rj_renuncia_cargo);
@@ -72,14 +92,36 @@ public class Cadastrar {
         manager.store(standup);
         manager.commit();
 
-
         geopolitica_eua_x_ira.addGenero(documentario);
         manager.store(geopolitica_eua_x_ira);
         manager.commit();
 
-
         irl_motovlog.addGenero(acao);
         manager.store(irl_motovlog);
+        manager.commit();
+
+        // 1 vídeo com 2 gêneros (compartilhando futebol com outro vídeo já existente)
+        bastidores_copa.addGenero(futebol);
+        bastidores_copa.addGenero(documentario);
+        manager.store(bastidores_copa);
+        manager.commit();
+
+        // 1 vídeo com 2 gêneros e teste de adição duplicada (não deve repetir por causa do contains)
+        analise_lancamento_game.addGenero(games);
+        analise_lancamento_game.addGenero(acao);
+        analise_lancamento_game.addGenero(games);
+        manager.store(analise_lancamento_game);
+        manager.commit();
+
+        // 1 vídeo com 2 gêneros (jornalismo + documentário)
+        reportagem_mobilidade.addGenero(jornalismo);
+        reportagem_mobilidade.addGenero(documentario);
+        manager.store(reportagem_mobilidade);
+        manager.commit();
+
+        // 1 vídeo com apenas 1 gênero
+        humor_sketch.addGenero(comedia);
+        manager.store(humor_sketch);
         manager.commit();
 
         // Guardando objetos órfãos

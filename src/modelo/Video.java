@@ -7,13 +7,13 @@ public class Video {
     // Declaração de variáveis
     private int id;
     private String titulo;
-    private String data = "?";
-    private String linksite = "?";
-    private String classificacao = "?";
+    private String data = "Desconhecido";
+    private String linksite = "Desconhecido";
+    private int classificacao;
     private List<Genero> listaGeneros = new ArrayList<>(); // Um vídeo pode ter vários gêneros N:N
 
     // Construtor
-    public Video(String titulo, String data, String linksite, String classificacao){
+    public Video(String titulo, String data, String linksite, int classificacao){
         this.titulo = titulo;
         this.data = data;
         this.linksite = linksite;
@@ -41,7 +41,7 @@ public class Video {
         return linksite;
     }
 
-    public String getClassificacao() {
+    public int getClassificacao() {
         return classificacao;
     }
 
@@ -63,7 +63,7 @@ public class Video {
         this.linksite = linksite;
     }
 
-    public void setClassificacao(String classificacao) {
+    public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
     }
 
@@ -86,7 +86,7 @@ public class Video {
 
     @Override
     public String toString() {
-        String texto = "\nVídeo " + id + ": " + titulo + "\nData: " + data + "\nClassificação: " + classificacao + "\nURL: '" + linksite + "'" + "\nGêneros: " ;
+        String texto = "\nVídeo " + id + ": " + titulo + "\nData: " + data + "\nClassificação: " + classificacao + " estrelas" + "\nURL: " + linksite + "\nGêneros: " ;
         if (listaGeneros.isEmpty())
             texto += "Sem gêneros";
         else
