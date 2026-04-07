@@ -68,64 +68,53 @@ public class Cadastrar {
 
         governador_rj_renuncia_cargo.addGenero(jornalismo);
         manager.store(governador_rj_renuncia_cargo);
-        manager.commit();
 
         brasil_x_franca.addGenero(futebol);
         manager.store(brasil_x_franca);
-        manager.commit();
 
         ad_cocacola.addGenero(publicidade);
         manager.store(ad_cocacola);
-        manager.commit();
 
         como_jogar_cs.addGenero(games);
         como_jogar_cs.addGenero(acao);
         manager.store(como_jogar_cs);
-        manager.commit();
 
         invasao_ucrania.addGenero(documentario);
         invasao_ucrania.addGenero(acao);
         manager.store(invasao_ucrania);
-        manager.commit();
 
         standup.addGenero(comedia);
         manager.store(standup);
-        manager.commit();
 
         geopolitica_eua_x_ira.addGenero(documentario);
         manager.store(geopolitica_eua_x_ira);
-        manager.commit();
 
         irl_motovlog.addGenero(acao);
         manager.store(irl_motovlog);
-        manager.commit();
 
         bastidores_copa.addGenero(futebol);
         bastidores_copa.addGenero(documentario);
         manager.store(bastidores_copa);
-        manager.commit();
 
         // teste duplicidade
         analise_lancamento_game.addGenero(games);
         analise_lancamento_game.addGenero(acao);
         analise_lancamento_game.addGenero(games);
         manager.store(analise_lancamento_game);
-        manager.commit();
 
         reportagem_mobilidade.addGenero(jornalismo);
         reportagem_mobilidade.addGenero(documentario);
         manager.store(reportagem_mobilidade);
-        manager.commit();
 
         humor_sketch.addGenero(comedia);
         manager.store(humor_sketch);
-        manager.commit();
 
         // Guardando objetos órfãos
         manager.store(desconhecido);
-        manager.commit();
 
         manager.store(tutorial);
+
+        // commit de todas as inserções
         manager.commit();
 
         // Desconectando do banco
