@@ -107,10 +107,6 @@ class Filtro1 implements Evaluation {
     @Override
     public void evaluate(Candidate candidate) {
         Genero genero = (Genero) candidate.getObject();
-        if (genero.getListaVideos() == null) {
-            candidate.include(false);
-            return;
-        }
         int i = 0;
 
         for (Video video : genero.getListaVideos()) {

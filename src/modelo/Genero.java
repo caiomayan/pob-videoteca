@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Genero {
-    // Declaração das variáveis da classe
     private int id;
     private final String nome;
     private List<Video> listaVideos = new ArrayList<>(); // Um gênero pode ter vários vídeos N:N

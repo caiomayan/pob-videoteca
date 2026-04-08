@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Video {
-    // Declaração de variáveis
     private int id;
     private String titulo;
     private String data = "Desconhecido";
@@ -20,7 +19,7 @@ public class Video {
         this.classificacao = classificacao;
     }
 
-    // Construtor com sobrecarga para vídeos sem gênero
+    // Construtor com sobrecarga para exemplo órfão
     public Video(String titulo) {
         this.titulo = titulo;
     }

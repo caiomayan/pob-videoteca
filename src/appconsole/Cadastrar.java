@@ -62,9 +62,7 @@ public class Cadastrar {
 
         Video desconhecido = new Video("Desconhecido");
 
-        // Relacionamentos e persistência: adicionando gêneros aos vídeos, guardando no
-        // manager (store) e enviando para o banco o que foi guardado no manager
-        // (commit).
+        // adicionando gêneros aos vídeos, dando store em cada alteração para o commit final
 
         governador_rj_renuncia_cargo.addGenero(jornalismo);
         manager.store(governador_rj_renuncia_cargo);
